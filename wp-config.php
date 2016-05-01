@@ -1,9 +1,9 @@
 <?php
 
-$db = array_merge(['port' => 3306], parse_url(getenv('JAWSDB_URL')?:getenv('CLEARDB_DATABASE_URL')));
+$db = array_merge(['port' => 3306], parse_url(getenv('MYSQL_URL')?:'mysql://root@localhost:3306/wordpress'));
 define('DB_NAME',     substr($db['path'], 1));
 define('DB_USER',     $db['user']);
-define('DB_PASSWORD', $db['pass']);
+define('DB_PASSWORD', $db['pass'] ? $db['pass'] : '');
 define('DB_HOST',     $db['host'].':'.$db['port']);
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
