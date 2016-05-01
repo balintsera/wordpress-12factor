@@ -10,21 +10,11 @@ Automatic updates for WordPress or plugins, and theme editing, are disabled inte
 
 [WP-CLI](http://wp-cli.org) is used for easier (or automated) handling of tasks such as enabling plugins or storing configuration options. After a deploy, a set of pre-configured [Composer scripts](https://getcomposer.org/doc/articles/scripts.md) can run several administrative functions using WP-CLI, such as initially configuring the blog, and enabling plugins (this happens either automatically when using a Heroku button deploy, or manually). This means that the installation of plugins and their configuration can be part of your version controlled code, so you can easily re-create a blog installation without any manual steps that need separate documentation.
 
-The configuration file is kept as generic as possible; on Heroku, add-ons [JawsDB](https://elements.heroku.com/addons/jawsdb) (for MySQL), [Bucketeer](https://elements.heroku.com/addons/bucketeer) (for S3 storage), and [SendGrid](https://elements.heroku.com/addons/sendgrid) (for E-Mails) are used.
+The configuration file is kept as generic as possible; S3 storage added.
 
 The assumption is that this installation runs behind a load balancer whose `X-Forwarded-Proto` header value can be trusted; it is used to determine whether the request protocol is HTTPS or not.
 
 HTTPS is forced for Login and Admin functions. `WP_DEBUG` is on; errors do not get displayed, but should get logged to PHP's default error log, accessible e.g. using `heroku logs`.
-
-## Quick Deploy
-
-If you have a [Heroku](http://heroku.com) account, you may simply use the following button to deploy this application:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-After the deploy, in [Heroku's Dashboard](https://dasboard.heroku.com) under "Settings" for your deployed application, **remove the `WORDPRESS_ADMIN_*` environment variables**.
-
-To set up WordPress' Cron Jobs using [Heroku Scheduler](https://elements.heroku.com/addons/scheduler), see further below.
 
 ## Manual Deploy
 
@@ -33,7 +23,7 @@ To set up WordPress' Cron Jobs using [Heroku Scheduler](https://elements.heroku.
 Clone this repo (we're naming the Git remote "`upstream`" since you'll likely want to have "`origin`" be your actual site - you can [sync](https://help.github.com/articles/syncing-a-fork) changes from this repository later):
 
 ```
-$ git clone -o upstream https://github.com/dzuelke/wordpress-12factor
+$ git clone -o upstream https://github.com/balintsera/wordpress-12factor.git
 $ cd wordpress-12factor
 ```
 
@@ -43,32 +33,11 @@ If you like, you can locally install dependencies with [Composer](https://getcom
 $ composer install
 ```
 
-### Create Application and Add-Ons
-
-Create a new app and add add-ons for MySQL, S3 and E-Mail:
-
-```
-$ heroku create
-$ heroku addons:create jawsdb
-$ heroku addons:create bucketeer
-$ heroku addons:create sendgrid
-```
-
 ### Set WordPress Keys and Salts
 
-This will use the WordPress secret keys service, parse out the values, and set them as [config vars](https://devcenter.heroku.com/articles/config-vars):
+Please use ENV variables in wp-config.php
 
-```
-$ heroku config:set $(curl 'https://api.wordpress.org/secret-key/1.1/salt/' | sed -E -e "s/^define\('(.+)', *'(.+)'\);$/WORDPRESS_\1=\2/" -e 's/ //g')
-```
 
-You can also generate your own key and set all required variables yourself (see section further below).
-
-### Deploy
-
-```
-$ git push heroku master
-```
 
 ### Finalize Installation
 
@@ -92,11 +61,7 @@ $ heroku run 'composer wordpress-setup-finalize'
 
 ### Visit Blog
 
-Navigate to the application's URL, or open your browser the lazy way:
-
-```
-$ heroku open
-```
+Navigate to the application's URL.
 
 ## Installing a new Plugin or Theme
 

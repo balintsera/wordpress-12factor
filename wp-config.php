@@ -33,7 +33,7 @@ define('FORCE_SSL_LOGIN', true);
 if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') $_SERVER['HTTPS'] = 'on';
 
 define('WP_DEBUG', true);
-define('WP_DEBUG_DISPLAY', false);
+define('WP_DEBUG_DISPLAY', true);
 define('WP_DEBUG_LOG', false); // this is correct - we don't want errors to go to debug.log, but to the default destination
 
 define('DISALLOW_FILE_MODS', true);
