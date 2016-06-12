@@ -1,6 +1,10 @@
 <?php
 
-$db = array_merge(['port' => 3306], parse_url(getenv('JAWSDB_URL')?:getenv('CLEARDB_DATABASE_URL')));
+if (!getenv('DATABASE_URL')) {
+		throw new Exception('DATABASE_URL must be set');
+}
+
+$db = array_merge(parse_url(getenv('DATABASE_URL')));
 define('DB_NAME',     substr($db['path'], 1));
 define('DB_USER',     $db['user']);
 define('DB_PASSWORD', $db['pass']);
@@ -9,15 +13,9 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 $table_prefix  = 'wp_';
 
-define('AWS_ACCESS_KEY_ID', getenv('AWS_ACCESS_KEY_ID')?:getenv('BUCKETEER_AWS_ACCESS_KEY_ID'));
+define('AWS_ACCESS_KEY_ID', getenv('AWS_ACCESS_KEY_ID') ? : getenv('BUCKETEER_AWS_ACCESS_KEY_ID'));
 define('AWS_SECRET_ACCESS_KEY', getenv('AWS_SECRET_ACCESS_KEY')?:getenv('BUCKETEER_AWS_SECRET_ACCESS_KEY'));
-define('AS3CF_BUCKET', getenv('S3_BUCKET')?:getenv('BUCKETEER_BUCKET_NAME'));
-if(getenv('S3_REGION')) define('AS3CF_REGION', getenv('S3_REGION'));
 
-define('SENDGRID_AUTH_METHOD', 'credentials');
-define('SENDGRID_USERNAME', getenv('SENDGRID_USERNAME'));
-define('SENDGRID_PASSWORD', getenv('SENDGRID_PASSWORD'));
-define('SENDGRID_SEND_METHOD', 'api');
 
 define('AUTH_KEY',         getenv('WORDPRESS_AUTH_KEY')        ?:'put your unique phrase here');
 define('SECURE_AUTH_KEY',  getenv('WORDPRESS_SECURE_AUTH_KEY') ?:'put your unique phrase here');
@@ -44,9 +42,3 @@ if(!defined('ABSPATH')) define('ABSPATH', dirname(__FILE__) . '/wordpress/'); //
 
 require_once(ABSPATH . 'wp-settings.php');
 
-// installs using a Heroku button do not know the URL, so they use example.com as the site URL, which we need to fix
-if(function_exists('get_option') && get_option('siteurl') == 'http://example.herokuapp.com') {
-	update_option('siteurl', set_url_scheme($url = 'http://'.$_SERVER['HTTP_HOST']));
-	header("Location: $url".$_SERVER['REQUEST_URI']);
-	exit;
-}
