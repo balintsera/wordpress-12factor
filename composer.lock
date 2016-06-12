@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dfa15471ada26c3a17bd747b84d5cfc3",
-    "content-hash": "40dd31850785468f76fb186d3846c192",
+    "hash": "25ff663f18e4525aed19c3181461ccd4",
+    "content-hash": "30320ae896d2e0aadddca885cb771dc5",
     "packages": [
         {
             "name": "composer/composer",
@@ -1328,69 +1328,6 @@
             "time": "2016-03-25 01:40:30"
         },
         {
-            "name": "symfony/var-dumper",
-            "version": "v3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "436195b421e8c0493ca3e390c1fbecd8ee08c546"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/436195b421e8c0493ca3e390c1fbecd8ee08c546",
-                "reference": "436195b421e8c0493ca3e390c1fbecd8ee08c546",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "require-dev": {
-                "twig/twig": "~1.20|~2.0"
-            },
-            "suggest": {
-                "ext-symfony_debug": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "Resources/functions/dump.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Component\\VarDumper\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony mechanism for exploring and dumping PHP variables",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "debug",
-                "dump"
-            ],
-            "time": "2016-05-24 10:06:56"
-        },
-        {
             "name": "symfony/yaml",
             "version": "v2.8.4",
             "source": {
@@ -1495,16 +1432,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-cli.git",
-                "reference": "4551260bc75cda1a415e83ead0ed47e77f085bb4"
+                "reference": "c7830930d09adbe7e6daf5357c233d49d65f891d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/4551260bc75cda1a415e83ead0ed47e77f085bb4",
-                "reference": "4551260bc75cda1a415e83ead0ed47e77f085bb4",
+                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/c7830930d09adbe7e6daf5357c233d49d65f891d",
+                "reference": "c7830930d09adbe7e6daf5357c233d49d65f891d",
                 "shasum": ""
             },
             "require": {
-                "composer/composer": "^1.0.0",
+                "composer/composer": "~1.0.0",
                 "composer/semver": "~1.0",
                 "mustache/mustache": "~2.4",
                 "mustangostang/spyc": "~0.5",
@@ -1553,7 +1490,7 @@
                 "cli",
                 "wordpress"
             ],
-            "time": "2016-06-11 23:31:41"
+            "time": "2016-04-20 22:28:28"
         },
         {
             "name": "wpackagist-plugin/amazon-s3-and-cloudfront",
@@ -1566,7 +1503,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.0.9.12.zip",
-                "reference": "tags/0.9.12",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1606,7 +1543,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip",
-                "reference": "trunk",
+                "reference": null,
                 "shasum": null
             },
             "require": {
