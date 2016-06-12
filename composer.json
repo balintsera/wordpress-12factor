@@ -37,6 +37,7 @@
 		],
 		"wordpress-setup-welcome-post": [
 			"echo 'It works! Please see <a href=\"https://github.com/balintsera/wordpress-12factor\">wordpress-12factor on GitHub</a> for info and post-install instructions.' | wp post update 1 - --post_title=\"Welcome to WordPress\""
-		]
+		],
+		"wpcli": "wp"
 	}
 }

@@ -64,6 +64,13 @@ DATABASE_URL=mysql://evistawp:8979h8ef67@127.0.0.1:32770/wpdb php -d variables_o
 
 Don't forget to relocate WP installation to localhost:8080 beforehand (or run composer install with this).
 
+## Run wp-cli
+
+```
+composer wp -- [wpcli params]
+
+# composer wp -- core version
+```
 
 ## Installing a new Plugin or Theme
 
