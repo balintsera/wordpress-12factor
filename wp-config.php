@@ -1,7 +1,5 @@
 <?php
 
-define('RELOCATE', true);
-
 if (!getenv('DATABASE_URL')) {
 		throw new Exception('DATABASE_URL must be set');
 }

@@ -3,6 +3,10 @@
 		{
 			"type": "composer",
 			"url": "https://wpackagist.org"
+		},
+		{
+			"type": "vcs",
+			"url": "git@github.com:balintsera/wp-comp-plug-pack-ex.git"
 		}
 	],
 	"extra": {
@@ -19,7 +23,8 @@
 		"wpackagist-plugin/amazon-web-services": "^0.3.4",
 		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",
-		"wp-cli/wp-cli": "dev-master"
+		"wp-cli/wp-cli": "dev-master",
+		"evista/wp-comp-plug-pack": "^1.2"
 	},
 	"scripts": {
 		"wordpress-setup-core-install-prompt": "wp core install --prompt",

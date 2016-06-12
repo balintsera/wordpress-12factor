@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c2996ec93750718a50b5a27a831095b4",
-    "content-hash": "30320ae896d2e0aadddca885cb771dc5",
+    "hash": "cf55f0bb47bb79bda417412350b13176",
+    "content-hash": "3acd47c23f3c0a247d78faecda8d1d62",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -361,6 +361,39 @@
                 "validator"
             ],
             "time": "2016-05-04 12:27:30"
+        },
+        {
+            "name": "evista/wp-comp-plug-pack",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/balintsera/wp-comp-plug-pack-ex.git",
+                "reference": "ba15146893e9cee24b5a40d1898f234bcccd1d6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/balintsera/wp-comp-plug-pack-ex/zipball/ba15146893e9cee24b5a40d1898f234bcccd1d6d",
+                "reference": "ba15146893e9cee24b5a40d1898f234bcccd1d6d",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0.6"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "MIT"
+            ],
+            "description": "Evista Dedicated Plugin",
+            "homepage": "https://github.com/balintsera/wp-comp-plug-pack-ex",
+            "keywords": [
+                "evista",
+                "plugin"
+            ],
+            "support": {
+                "source": "https://github.com/balintsera/wp-comp-plug-pack-ex/tree/v1.2",
+                "issues": "https://github.com/balintsera/wp-comp-plug-pack-ex/issues"
+            },
+            "time": "2016-06-12 14:54:31"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -1619,7 +1652,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/amazon-web-services.zip",
-                "reference": null,
+                "reference": "trunk",
                 "shasum": null
             },
             "require": {
