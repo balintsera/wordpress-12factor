@@ -1,10 +1,11 @@
 <?php
 
+define('RELOCATE', true);
+
 if (!getenv('DATABASE_URL')) {
 		throw new Exception('DATABASE_URL must be set');
 }
 $db = parse_url(getenv('DATABASE_URL'));
-var_dump($db);
 
 define('DB_NAME',     substr($db['path'], 1));
 define('DB_USER',     $db['user']);
@@ -26,8 +27,8 @@ define('SECURE_AUTH_SALT', getenv('WORDPRESS_SECURE_AUTH_SALT')?:'put your uniqu
 define('LOGGED_IN_SALT',   getenv('WORDPRESS_LOGGED_IN_SALT')  ?:'put your unique phrase here');
 define('NONCE_SALT',       getenv('WORDPRESS_NONCE_SALT')      ?:'put your unique phrase here');
 
-define('FORCE_SSL_ADMIN', true);
-define('FORCE_SSL_LOGIN', true);
+// define('FORCE_SSL_ADMIN', true);
+// define('FORCE_SSL_LOGIN', true);
 if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') $_SERVER['HTTPS'] = 'on';
 
 define('WP_DEBUG', true);

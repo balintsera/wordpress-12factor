@@ -56,6 +56,14 @@ Finally, the following command will configure and enable plugins and set a reaso
 $ composer wordpress-setup-finalize
 ```
 
+## Developing using local php server
+
+```bash
+DATABASE_URL=mysql://evistawp:8979h8ef67@127.0.0.1:32770/wpdb php -d variables_order=EGPCS -S 127.0.0.1:8080
+```
+
+Don't forget to relocate WP installation to localhost:8080 beforehand (or run composer install with this).
+
 
 ## Installing a new Plugin or Theme
 
