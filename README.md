@@ -10,23 +10,19 @@ Automatic updates for WordPress or plugins, and theme editing, are disabled inte
 
 [WP-CLI](http://wp-cli.org) is used for easier (or automated) handling of tasks such as enabling plugins or storing configuration options. After a deploy, a set of pre-configured [Composer scripts](https://getcomposer.org/doc/articles/scripts.md) can run several administrative functions using WP-CLI, such as initially configuring the blog, and enabling plugins (this happens either automatically when using a Heroku button deploy, or manually). This means that the installation of plugins and their configuration can be part of your version controlled code, so you can easily re-create a blog installation without any manual steps that need separate documentation.
 
-The configuration file is kept as generic as possible; on Heroku, add-ons [JawsDB](https://elements.heroku.com/addons/jawsdb) (for MySQL), [Bucketeer](https://elements.heroku.com/addons/bucketeer) (for S3 storage), and [SendGrid](https://elements.heroku.com/addons/sendgrid) (for E-Mails) are used.
 
 The assumption is that this installation runs behind a load balancer whose `X-Forwarded-Proto` header value can be trusted; it is used to determine whether the request protocol is HTTPS or not.
 
 HTTPS is forced for Login and Admin functions. `WP_DEBUG` is on; errors do not get displayed, but should get logged to PHP's default error log, accessible e.g. using `heroku logs`.
 
-## Quick Deploy
 
-If you have a [Heroku](http://heroku.com) account, you may simply use the following button to deploy this application:
+## Manual Install / Deploy
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+### Setup Database 
 
-After the deploy, in [Heroku's Dashboard](https://dasboard.heroku.com) under "Settings" for your deployed application, **remove the `WORDPRESS_ADMIN_*` environment variables**.
+`export DATABASE_URL=mysql://evistawp:8979h8ef67@127.0.0.1:32770/wpdb`
 
-To set up WordPress' Cron Jobs using [Heroku Scheduler](https://elements.heroku.com/addons/scheduler), see further below.
-
-## Manual Deploy
+See [here](https://httpd.apache.org/docs/current/mod/mod_env.html#setenv) how to set up Apahce Enviroment variables (`/wordpress/.htaccess`)
 
 ### Clone
 
@@ -43,60 +39,23 @@ If you like, you can locally install dependencies with [Composer](https://getcom
 $ composer install
 ```
 
-### Create Application and Add-Ons
-
-Create a new app and add add-ons for MySQL, S3 and E-Mail:
-
-```
-$ heroku create
-$ heroku addons:create jawsdb
-$ heroku addons:create bucketeer
-$ heroku addons:create sendgrid
-```
-
-### Set WordPress Keys and Salts
-
-This will use the WordPress secret keys service, parse out the values, and set them as [config vars](https://devcenter.heroku.com/articles/config-vars):
-
-```
-$ heroku config:set $(curl 'https://api.wordpress.org/secret-key/1.1/salt/' | sed -E -e "s/^define\('(.+)', *'(.+)'\);$/WORDPRESS_\1=\2/" -e 's/ //g')
-```
-
-You can also generate your own key and set all required variables yourself (see section further below).
-
-### Deploy
-
-```
-$ git push heroku master
-```
 
 ### Finalize Installation
 
 This will create tables and set up an admin user:
 
 ```
-$ heroku run 'composer wordpress-setup-core-install -- --title="WordPress on Heroku" --admin_user=admin --admin_password=admin --admin_email=admin@example.com --url="http://example.herokuapp.com/"'
+$ composer wordpress-setup-core-install -- --title="Evista WordPress" --admin_user=admin --admin_password=admin --admin_email=admin@example.com --url="http://exampleapp.com/"
 ```
 
-If you'd like to interactively provide info instead (use a format like "`http://example.herokuapp.com`" with your app name for the URL), you can run:
-
-```
-$ heroku run 'vendor/bin/wp core install --prompt'
-```
+If you'd like to interactively provide info instead (use a format like "`http://exampleapp.com/`" with your app name for the URL), you can run:
 
 Finally, the following command will configure and enable plugins and set a reasonable structure for Permalinks:
 
 ```
-$ heroku run 'composer wordpress-setup-finalize'
+$ composer wordpress-setup-finalize
 ```
 
-### Visit Blog
-
-Navigate to the application's URL, or open your browser the lazy way:
-
-```
-$ heroku open
-```
 
 ## Installing a new Plugin or Theme
 
@@ -145,7 +104,7 @@ Afterwards, add, commit and push the changes:
 ```
 $ git add composer.json composer.lock
 $ git commit -m "new WordPress and Plugins"
-$ git push heroku master
+$ git push [branch]
 ```
 
 ## Web Servers
@@ -172,18 +131,13 @@ Instead of having WordPress check on each page load if Cron Jobs need to be run 
 
 ### Database Connection
 
-`DATABASE_URL` or `JAWSDB_URL` or `CLEARDB_DATABASE_URL` (format `mysql://user:pass@host:port/dbname`) for database connections.
+`DATABASE_URL` (format `mysql://user:pass@host:port/dbname`) for database connections.
 
 ### AWS/S3
 
 * `AWS_ACCESS_KEY_ID` or `BUCKETEER_AWS_ACCESS_KEY_ID` for the AWS Access Key ID;
 * `AWS_SECRET_ACCESS_KEY` `BUCKETEER_AWS_SECRET_ACCESS_KEY` for the AWS Secret Access Key;
-* `S3_BUCKET` or `BUCKETEER_BUCKET_NAME` for the name of the S3 bucket;
-* `S3_REGION` for a non-default S3 region name.
 
-### SendGrid
-
-`SENDGRID_USERNAME` and `SENDGRID_PASSWORD` for SendGrind credentials.
 
 ### WordPress Secrets
 

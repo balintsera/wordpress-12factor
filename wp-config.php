@@ -3,8 +3,9 @@
 if (!getenv('DATABASE_URL')) {
 		throw new Exception('DATABASE_URL must be set');
 }
+$db = parse_url(getenv('DATABASE_URL'));
+var_dump($db);
 
-$db = array_merge(parse_url(getenv('DATABASE_URL')));
 define('DB_NAME',     substr($db['path'], 1));
 define('DB_USER',     $db['user']);
 define('DB_PASSWORD', $db['pass']);
@@ -15,7 +16,6 @@ $table_prefix  = 'wp_';
 
 define('AWS_ACCESS_KEY_ID', getenv('AWS_ACCESS_KEY_ID') ? : getenv('BUCKETEER_AWS_ACCESS_KEY_ID'));
 define('AWS_SECRET_ACCESS_KEY', getenv('AWS_SECRET_ACCESS_KEY')?:getenv('BUCKETEER_AWS_SECRET_ACCESS_KEY'));
-
 
 define('AUTH_KEY',         getenv('WORDPRESS_AUTH_KEY')        ?:'put your unique phrase here');
 define('SECURE_AUTH_KEY',  getenv('WORDPRESS_SECURE_AUTH_KEY') ?:'put your unique phrase here');
