@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "25ff663f18e4525aed19c3181461ccd4",
+    "hash": "1c19333e1e70a71d2490615f07727c34",
     "content-hash": "30320ae896d2e0aadddca885cb771dc5",
     "packages": [
         {
@@ -1503,7 +1503,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.0.9.12.zip",
-                "reference": null,
+                "reference": "tags/0.9.12",
                 "shasum": null
             },
             "require": {
@@ -1543,7 +1543,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip",
-                "reference": null,
+                "reference": "trunk",
                 "shasum": null
             },
             "require": {
