@@ -42,24 +42,16 @@ $ composer install
 
 ### Finalize Installation
 
-This will create tables and set up an admin user:
+This will create tables and set up an admin user, then finalizes the install with installing some important plugins.
 
 ```
-$ composer wordpress-setup-core-install -- --title="Evista WordPress" --admin_user=admin --admin_password=admin --admin_email=admin@example.com --url="http://exampleapp.com/"
-```
-
-If you'd like to interactively provide info instead (use a format like "`http://exampleapp.com/`" with your app name for the URL), you can run:
-
-Finally, the following command will configure and enable plugins and set a reasonable structure for Permalinks:
-
-```
-$ composer wordpress-setup-finalize
+$ composer wordpress-setup -- --title="Evista WordPress" --admin_user=admin --admin_password=admin --admin_email=admin@example.com --url="http://localhost:8080/"
 ```
 
 ## Developing using local php server
 
 ```bash
-DATABASE_URL=mysql://evistawp:8979h8ef67@127.0.0.1:32770/wpdb php -d variables_order=EGPCS -S 127.0.0.1:8080
+DATABASE_URL=mysql://evistawp:8979h8ef67@127.0.0.1:32770/wpdb (cd wordpress && php -d variables_order=EGPCS -S 127.0.0.1:8080)
 ```
 
 Don't forget to relocate WP installation to localhost:8080 beforehand (or run composer install with this).

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cf55f0bb47bb79bda417412350b13176",
-    "content-hash": "3acd47c23f3c0a247d78faecda8d1d62",
+    "hash": "b699cb149f881d7207ad37e7ecd62bda",
+    "content-hash": "773ea15eca2b5e16a8b41e35f71c47e2",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -396,6 +396,47 @@
             "time": "2016-06-12 14:54:31"
         },
         {
+            "name": "ivome/graphql-relay-php",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ivome/graphql-relay-php.git",
+                "reference": "6116be5f4c8ddce65aec57d9668571eec1e71563"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ivome/graphql-relay-php/zipball/6116be5f4c8ddce65aec57d9668571eec1e71563",
+                "reference": "6116be5f4c8ddce65aec57d9668571eec1e71563",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4,<8.0-DEV",
+                "webonyx/graphql-php": ">=0.5.7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8",
+                "satooshi/php-coveralls": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "description": "A PHP port of GraphQL Relay reference implementation",
+            "homepage": "https://github.com/ivome/graphql-relay-php",
+            "keywords": [
+                "Relay",
+                "api",
+                "graphql"
+            ],
+            "time": "2016-05-03 15:55:58"
+        },
+        {
             "name": "johnpbloch/wordpress",
             "version": "4.5.2",
             "source": {
@@ -545,6 +586,91 @@
                 "schema"
             ],
             "time": "2016-01-25 15:43:01"
+        },
+        {
+            "name": "mohiohio/graphql-wp",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tim-field/graphql-wp.git",
+                "reference": "08359df37e874eb5f526e08809be50bd24a79b2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tim-field/graphql-wp/zipball/08359df37e874eb5f526e08809be50bd24a79b2c",
+                "reference": "08359df37e874eb5f526e08809be50bd24a79b2c",
+                "shasum": ""
+            },
+            "require": {
+                "ivome/graphql-relay-php": "^0.1.2",
+                "mohiohio/wordpress-lib": "^0.1",
+                "php": ">=5.5",
+                "webonyx/graphql-php": "^v0.6"
+            },
+            "require-dev": {
+                "analog/analog": "^1.0"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Mohiohio\\GraphQLWP\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Field",
+                    "email": "field.tim@gmail.com"
+                }
+            ],
+            "description": "A GraphQL endpoint for WordPress",
+            "time": "2016-06-19 08:42:54"
+        },
+        {
+            "name": "mohiohio/wordpress-lib",
+            "version": "0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mohiohio/wordpress-lib.git",
+                "reference": "8b7bfb60d13afdee785cb485d2c4ad7b21f60c3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mohiohio/wordpress-lib/zipball/8b7bfb60d13afdee785cb485d2c4ad7b21f60c3b",
+                "reference": "8b7bfb60d13afdee785cb485d2c4ad7b21f60c3b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mohiohio\\WordPress\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Field",
+                    "email": "field.tim@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "WordPress Utilities",
+            "homepage": "http://www.mohiohio.com",
+            "keywords": [
+                "library",
+                "php",
+                "wordpress"
+            ],
+            "time": "2016-06-28 01:57:03"
         },
         {
             "name": "mustache/mustache",
@@ -1504,6 +1630,44 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-06-06 11:11:27"
+        },
+        {
+            "name": "webonyx/graphql-php",
+            "version": "v0.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webonyx/graphql-php.git",
+                "reference": "0c1ad084d4e9488b7ec72680f59316af34454964"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/0c1ad084d4e9488b7ec72680f59316af34454964",
+                "reference": "0c1ad084d4e9488b7ec72680f59316af34454964",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4,<8.0-DEV"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GraphQL\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "description": "A PHP port of GraphQL reference implementation",
+            "homepage": "https://github.com/webonyx/graphql-php",
+            "keywords": [
+                "api",
+                "graphql"
+            ],
+            "time": "2016-06-11 06:43:32"
         },
         {
             "name": "wp-cli/php-cli-tools",

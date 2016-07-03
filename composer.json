@@ -24,16 +24,18 @@
 		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",
 		"wp-cli/wp-cli": "dev-master",
-		"evista/wp-comp-plug-pack": "^1.2"
+		"evista/wp-comp-plug-pack": "^1.2",
+		"mohiohio/graphql-wp": "^0.1.2"
 	},
 	"scripts": {
 		"wordpress-setup-core-install-prompt": "wp core install --prompt",
 		"wordpress-setup-clear-home": "wp option delete home || true",
-		"wordpress-setup-enable-plugins": "wp plugin activate amazon-web-services",
+		"wordpress-setup-enable-plugins": "wp plugin activate graphql-wp; #",
 		"wordpress-setup-permalink-structure": "wp rewrite structure '/%year%/%monthnum%/%day%/%postname%/' || true",
 		"wordpress-setup": [
 			"@wordpress-setup-core-install-prompt",
-			"@wordpress-setup-finalize"
+			"@wordpress-setup-finalize",
+			"echo 'Install finished. Start develop with running: cd wordpress && php -S 127.0.0.1'"
 		],
 		"wordpress-setup-finalize": [
 			"@wordpress-setup-clear-home",
