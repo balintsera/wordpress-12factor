@@ -54,7 +54,7 @@ $ composer wordpress-setup -- --title="Evista WordPress" --admin_user=admin --ad
 DATABASE_URL=mysql://evistawp:8979h8ef67@127.0.0.1:32770/wpdb (cd wordpress && php -d variables_order=EGPCS -S 127.0.0.1:8080)
 ```
 
-Don't forget to relocate WP installation to localhost:8080 beforehand (or run composer install with this).
+Don't forget to relocate WP installation to localhost:8080 beforehand (or run composer install with this) or login to wp-admin via `http://localhost:8080/wp-login.php`, then fill Site Address (URL) input (http://localhost:8080) under Settings and Save it.
 
 ## Run wp-cli
 
