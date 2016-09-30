@@ -16,19 +16,7 @@ done;
 # plugin activation
 
 PLUGINS_TO_ACTIVATE='
-#evista-composer-wordpress
-wordpress-seo
-contact-form-7
 #w3-total-cache
-advanced-custom-fields-pro
-tinymce-advanced
-mailchimp-for-wp
-disable-comments
-custom-post-type-generator
-advanced-custom-field-repeater-collapser
-tiny-compress-image
-better-wp-security
-google-analytics-for-wordpress
 '
 for curr_plugin in $PLUGINS_TO_ACTIVATE
 do
