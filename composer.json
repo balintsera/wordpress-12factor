@@ -43,6 +43,22 @@
 		"wordpress-setup-welcome-post": [
 			"echo 'It works! Please see <a href=\"https://github.com/balintsera/wordpress-12factor\">wordpress-12factor on GitHub</a> for info and post-install instructions.' | wp post update 1 - --post_title=\"Welcome to WordPress\""
 		],
-		"wpcli": "wp"
+		"wpcli": "wp",
+		"pre-install-cmd": [
+			"rm -rf uploads",
+			"php move-uploads-win.php pre"
+		],
+		"pre-update-cmd": [
+			"rm -rf uploads",
+			"php move-uploads-win.php pre"
+		],
+		"post-install-cmd": [
+			"cp -f deploy.php wordpress",
+			"php move-uploads-win.php post"
+		],
+		"post-update-cmd": [
+			"cp -f deploy.php wordpress",
+			"php move-uploads-win.php post"
+		]
 	}
 }
