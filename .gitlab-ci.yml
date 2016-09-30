@@ -1,0 +1,52 @@
+# This file is a template, and might need editing before it works on your project. 
+# PHP example: http://docs.gitlab.com/ce/ci/examples/php.html
+image: php:5.6
+
+# Composer stores all downloaded packages in the vendor/ directory.
+# Do not use the following if the vendor/ directory is commited to
+# your git repository.
+cache:
+  paths:
+  - vendor/
+  - wordpress/
+  - uploads/
+
+before_script:
+# Docker install
+- bash ci/docker_install.sh > /dev/null
+# add deploy keys using Gitlab Variables (ID_RSA)
+- apt-get install openssh-client -yqq
+- eval $(ssh-agent -s)
+- ssh-add <(echo "$ID_RSA")
+- mkdir -p ~/.ssh
+- '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+
+# Install composer dependencies
+- curl -sS https://getcomposer.org/installer | php
+- php composer.phar install --ignore-platform-reqs
+
+
+php_standards:
+  type: test
+  script:
+  - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+  - php phpcs.phar --standard=PSR2 src
+  allow_failure: true
+
+javascript_standards:
+  type: test
+  script:
+  - curl -sL https://deb.nodesource.com/setup_4.x | bash -
+  - apt-get install -y nodejs
+  - npm install
+  - node_modules/eslint/bin/eslint.js -c .eslint src/themes/pass/js/functions.js
+  allow_failure: true
+
+staging:
+  type: deploy
+  only:
+  - master
+  script:
+  - curl -k -uuser:pass http://example.com/deploy.php
+

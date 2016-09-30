@@ -42,7 +42,7 @@ $ composer install
 
 ### Finalize Installation
 
-This will create tables and set up an admin user, then finalizes the install with installing some important plugins.
+This will create tables and set up an admin user, then finalizes the install with installing some important plugins. This won't work on Windows, sorry, if you have any idea why, please send a pull request.
 
 ```
 $ composer wordpress-setup -- --title="Evista WordPress" --admin_user=admin --admin_password=admin --admin_email=admin@example.com --url="http://localhost:8080/"
@@ -51,18 +51,20 @@ $ composer wordpress-setup -- --title="Evista WordPress" --admin_user=admin --ad
 ## Developing using local php server
 
 ```bash
-DATABASE_URL=mysql://evistawp:8979h8ef67@127.0.0.1:32770/wpdb (cd wordpress && php -d variables_order=EGPCS -S 127.0.0.1:8080)
+export DATABASE_URL=mysql://evistawp:8979h8ef67@127.0.0.1:32770/wpdb (cd wordpress && php -S 127.0.0.1:8080)
 ```
 
 Don't forget to relocate WP installation to localhost:8080 beforehand (or run composer install with this) or login to wp-admin via `http://localhost:8080/wp-login.php`, then fill Site Address (URL) input (http://localhost:8080) under Settings and Save it.
 
-## Run wp-cli
+## Run wp-cli 
 
 ```
 composer wp -- [wpcli params]
 
 # composer wp -- core version
 ```
+
+This won't work in Windows, sorry. We're investigating this error and trying to solve.
 
 ## Installing a new Plugin or Theme
 
@@ -84,17 +86,20 @@ composer wp -- [wpcli params]
 1. Run `git add composer.json composer.lock` and `git commit`;
 1. `git push heroku master`
 
-### Activating a Plugin or Theme once
+### Adding custom theme or plugin
 
-Run `heroku run 'vendor/bin/wp plugin activate` or `vendor/bin/wp theme activate` and pass the name of the plugin or theme (e.g. `wp theme activate hueman`).
+Composer can manage local (in-repo) pahts as package as long as they have an appropriate composer.json file and the global (repo wise) composer.json has a path type repository with the path set in the url property.
 
-However, if you're working on an actual project, you will also want to ensure that this step can be run as part of the installation - see the next section for info.
+See the details here: [Composer managed WordpressPlugin](https://medium.com/@balint_sera/create-new-composer-managed-plugin-for-wordpress-72817ba62612#.lk2vh9lko)
 
-### Activating a Plugin or Theme, the repeatable way
 
-See the `scripts` section in `composer.json` for inspiration. A [Composer script](https://getcomposer.org/doc/articles/scripts.md) named `wordpress-setup-enable-plugins` (which gets in turn called by another script) enables three plugins by default using WP-CLI's `wp` command, and you can just add yours to the list. You'll notice that a separate step before also configures one of the plugins; you can do the same for your customizations.
+### Activating a Plugin or Theme
 
-After you adjusted the scripts section, run `composer update --lock`, then `git add composer.json composer.lock`, and `git commit` the changes.
+```
+$ composer require [vendor/packagename]
+```
+
+Be sure that [vendor/packagename] is the same as you can find in the package's composer.json name parameter. 
 
 ## Updating WordPress and Plugins
 
@@ -136,9 +141,6 @@ Instead of having WordPress check on each page load if Cron Jobs need to be run 
 
 `wp-config.php` will use the following environment variables (if multiple are listed, in order of precedence):
 
-### Database Connection
-
-`DATABASE_URL` (format `mysql://user:pass@host:port/dbname`) for database connections.
 
 ### AWS/S3
 
