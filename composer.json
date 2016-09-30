@@ -46,19 +46,19 @@
 		"wpcli": "wp",
 		"pre-install-cmd": [
 			"rm -rf uploads",
-			"php move-uploads-win.php pre"
+			"php move-uploads.php pre"
 		],
 		"pre-update-cmd": [
 			"rm -rf uploads",
-			"php move-uploads-win.php pre"
+			"php move-uploads.php pre"
 		],
 		"post-install-cmd": [
 			"cp -f deploy.php wordpress",
-			"php move-uploads-win.php post"
+			"php move-uploads.php post"
 		],
 		"post-update-cmd": [
 			"cp -f deploy.php wordpress",
-			"php move-uploads-win.php post"
+			"php move-uploads.php post"
 		]
 	}
 }
