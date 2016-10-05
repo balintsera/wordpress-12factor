@@ -22,10 +22,12 @@ if($os === 'darwin' || strpos($os, 'win') === false) {
 switch($argv[1]){
     case 'pre':
       rename("wordpress/wp-content/uploads", "uploads");
+      rename("wordpress/.htaccess", ".htaccess");
     break;
 
     case 'post':
       rename("uploads", "wordpress/wp-content/uploads");
+      rename(".htaccess", "wordpress/.htaccess");
     break;
     default:
       throw new Exception('No argument or wrong argument:' . $argv[1]);

@@ -44,21 +44,26 @@
 			"echo 'It works! Please see <a href=\"https://github.com/balintsera/wordpress-12factor\">wordpress-12factor on GitHub</a> for info and post-install instructions.' | wp post update 1 - --post_title=\"Welcome to WordPress\""
 		],
 		"wpcli": "wp",
-		"pre-install-cmd": [
+		"post-file-ops": [
+			"cp -rf src/languages wordpress/wp-content/",
+			"cp -f deploy.php wordpress",
+			"php move-uploads.php post"
+		],
+		"pre-file-ops": [
 			"rm -rf uploads",
 			"php move-uploads.php pre"
+		],
+		"pre-install-cmd": [
+			"@pre-file-ops"
 		],
 		"pre-update-cmd": [
-			"rm -rf uploads",
-			"php move-uploads.php pre"
+			"@pre-file-ops"
 		],
-		"post-install-cmd": [
-			"cp -f deploy.php wordpress",
-			"php move-uploads.php post"
+		"post-install-cmd" : [
+			"@post-file-ops"
 		],
-		"post-update-cmd": [
-			"cp -f deploy.php wordpress",
-			"php move-uploads.php post"
+		"post-update-cmd" : [
+			"@post-file-ops"
 		]
 	}
 }
