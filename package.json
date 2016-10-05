@@ -1,14 +1,10 @@
 {
-  "name": "Evista Wordpress Twelve-Factor",
+  "name": "evista-twelve-factor",
   "version": "1.0.0",
   "description": "WordPress, the [Twelve-Factor](http://12factor.net/) way: fully managed using Composer and configured using environment variables.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@gitlab.dev.e-vista.hu:2828/succ/web-No75.git"
   },
   "author": "",
   "license": "ISC",
@@ -19,3 +15,4 @@
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0"
   }
+}
