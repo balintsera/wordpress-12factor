@@ -21,7 +21,7 @@
 	},
 	"require": {
 		"ext-gd": "*",
-		"johnpbloch/wordpress": "^4.5",
+		"johnpbloch/wordpress": "^4.6",
 		"wp-cli/wp-cli": "dev-master",
 		"evista/wp-comp-plug-pack": "^1.2"
 	},
