@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: text/plain", true, 200);
 echo "Deploying...\n";
-$projectRoot = __DIR__;
+$projectRoot = __DIR__ + '/../';
 chdir($projectRoot);
 // A user must be set up who can write the docroot 
 if (empty(getenv('DEPLOY_USER'))) {
