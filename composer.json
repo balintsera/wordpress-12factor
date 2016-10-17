@@ -45,7 +45,7 @@
 		],
 		"wpcli": "wp",
 		"post-file-ops": [
-			"cp -rf src/languages wordpress/wp-content/",
+			"if [ -d  src/languages ]; then cp -rf src/languages wordpress/wp-content/; fi",
 			"cp -f deploy.php wordpress",
 			"php move-uploads.php post"
 		],
