@@ -21,14 +21,32 @@ if($os === 'darwin' || strpos($os, 'win') === false) {
 // Windows
 switch($argv[1]){
     case 'pre':
-      rename("wordpress/wp-content/uploads", "uploads");
-      rename("wordpress/.htaccess", ".htaccess");
+      moveIfExists("wordpress/wp-content/uploads", "uploads");
+      moveIfExists("wordpress/.htaccess", ".htaccess");
     break;
 
     case 'post':
-      rename("uploads", "wordpress/wp-content/uploads");
-      rename(".htaccess", "wordpress/.htaccess");
+      moveIfExists("uploads", "wordpress/wp-content/uploads");
+      moveIfExists(".htaccess", "wordpress/.htaccess");
+      moveIfExists("src/languages", "wordpress/wp-content/");
     break;
     default:
       throw new Exception('No argument or wrong argument:' . $argv[1]);
+}
+
+
+function moveIfExists($target, $destination) {
+  if (!file_exists($target)) {
+    return;
+  }
+  
+  rename($target, $destination);
+}
+
+function copyIfExists($target, $destination) {
+   if (!file_exists($target)) {
+    return;
+  }
+
+  shell_exec("cp -r $target $dest");
 }
