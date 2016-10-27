@@ -28,7 +28,7 @@ switch($argv[1]){
     case 'post':
       moveIfExists("uploads", "wordpress/wp-content/uploads");
       moveIfExists(".htaccess", "wordpress/.htaccess");
-      moveIfExists("src/languages", "wordpress/wp-content/");
+      moveIfExists("src/languages", "wordpress/wp-content/languages");
     break;
     default:
       throw new Exception('No argument or wrong argument:' . $argv[1]);
