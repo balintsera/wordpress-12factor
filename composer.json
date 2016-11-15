@@ -33,7 +33,7 @@
 	"scripts": {
 		"wordpress-setup-core-install-prompt": "wp core install --prompt",
 		"wordpress-setup-clear-home": "wp option delete home || true",
-		"wordpress-setup-enable-plugins": "wp plugin activate graphql-wp; #",
+		"wordpress-setup-enable-plugins": "wp plugin activate vendauto #",
 		"wordpress-setup-permalink-structure": "wp rewrite structure '/%year%/%monthnum%/%day%/%postname%/' || true",
 		"wordpress-setup": [
 			"@wordpress-setup-core-install-prompt",
