@@ -9,7 +9,11 @@
 		{
 			"type": "vcs",
 			"url": "git@github.com:balintsera/wp-comp-plug-pack-ex.git"
-		}
+		},
+		{
+			"type": "vcs",
+			"url": "ssh://git@gitlab.dev.e-vista.hu:2828/wp/vendauto.git"
+    }
 	],
 	"extra": {
 		"wordpress-install-dir": "wordpress",
@@ -23,7 +27,8 @@
 		"ext-gd": "*",
 		"johnpbloch/wordpress": "^4.6",
 		"wp-cli/wp-cli": "dev-master",
-		"evista/wp-comp-plug-pack": "^1.2"
+		"evista/wp-comp-plug-pack": "^1.2",
+		"evista/vendauto": "dev-master"
 	},
 	"scripts": {
 		"wordpress-setup-core-install-prompt": "wp core install --prompt",

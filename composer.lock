@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3382c3bd7de65d101b93fab175d46127",
-    "content-hash": "0666af2650b9668cf7a673ad178e3dbf",
+    "hash": "b69f5221815ad2208aff1dd8d1435958",
+    "content-hash": "db827ca28588933a02567c3cceac095e",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -364,6 +364,29 @@
                 "validator"
             ],
             "time": "2016-09-28 07:17:45"
+        },
+        {
+            "name": "evista/vendauto",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.dev.e-vista.hu:2828/wp/vendauto.git",
+                "reference": "81e20636640f384e2fe5e6cd3d5b25abb42cb436"
+            },
+            "require": {
+                "johnpbloch/wordpress": "^4.5"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "GPLv3"
+            ],
+            "description": "Automated Vendor Loading for composer managed plugins. This plugin is necessary to other packages for a working vendor autoload.",
+            "homepage": "http://digital-agency.co",
+            "keywords": [
+                "evista",
+                "plugin"
+            ],
+            "time": "2016-11-15 14:01:48"
         },
         {
             "name": "evista/wp-comp-plug-pack",
@@ -1700,7 +1723,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "wp-cli/wp-cli": 20
+        "wp-cli/wp-cli": 20,
+        "evista/vendauto": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
