@@ -25,6 +25,7 @@
 	},
 	"require": {
 		"ext-gd": "*",
+		"composer/installers": "~1.0.6",
 		"johnpbloch/wordpress": "^4.6",
 		"wp-cli/wp-cli": "dev-master",
 		"evista/wp-comp-plug-pack": "^1.2",
