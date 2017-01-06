@@ -1,6 +1,6 @@
 # This file is a template, and might need editing before it works on your project. 
 # PHP example: http://docs.gitlab.com/ce/ci/examples/php.html
-image: php:5.6
+image: balintsera/php56-node-gl-runner
 
 # Composer stores all downloaded packages in the vendor/ directory.
 # Do not use the following if the vendor/ directory is commited to
