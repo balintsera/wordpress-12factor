@@ -12,33 +12,20 @@ cache:
   - uploads/
 
 before_script:
-# Docker install
 - bash ci/docker_install.sh > /dev/null
-# add deploy keys using Gitlab Variables (ID_RSA)
-- apt-get install openssh-client -yqq
-- eval $(ssh-agent -s)
-- ssh-add <(echo "$ID_RSA")
-- mkdir -p ~/.ssh
-- '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-
-
-# Install composer dependencies
-- curl -sS https://getcomposer.org/installer | php
-- php composer.phar install --ignore-platform-reqs
+# Composer install
+- composer install
 
 
 php_standards:
   type: test
   script:
-  - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-  - php phpcs.phar --standard=PSR2 src
+  - ./vendor/bin/phpcs --standard=PSR2 src
   allow_failure: true
 
 javascript_standards:
   type: test
   script:
-  - curl -sL https://deb.nodesource.com/setup_4.x | bash -
-  - apt-get install -y nodejs
   - npm install
   - node_modules/eslint/bin/eslint.js -c .eslint src/themes/pass/js/functions.js
   allow_failure: true
