@@ -20,7 +20,7 @@ before_script:
 php_standards:
   type: test
   script:
-  - ./vendor/bin/phpcs --standard=PSR2 src
+  - php phpcs.phar --standard=PSR2 src
   allow_failure: true
 
 javascript_standards:
