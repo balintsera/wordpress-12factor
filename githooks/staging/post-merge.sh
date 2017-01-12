@@ -17,6 +17,7 @@ done;
 
 PLUGINS_TO_ACTIVATE='
 #w3-total-cache
+easy-wp-smtp
 '
 for curr_plugin in $PLUGINS_TO_ACTIVATE
 do
