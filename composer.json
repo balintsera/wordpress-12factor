@@ -1,70 +1,70 @@
 {
-	"minimum-stability": "dev",
-	"prefer-stable": true,
-	"repositories": [
-		{
-			"type": "composer",
-			"url": "https://wpackagist.org"
-		},
-		{
-			"type": "vcs",
-			"url": "ssh://git@gitlab.dev.e-vista.hu:2828/wp/vendauto.git"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "ssh://git@gitlab.dev.e-vista.hu:2828/wp/vendauto.git"
     }
-	],
-	"extra": {
-		"wordpress-install-dir": "wordpress",
-		"installer-paths": {
-			"wordpress/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-			"wordpress/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-			"wordpress/wp-content/themes/{$name}/": ["type:wordpress-theme"]
-		}
-	},
-	"require": {
-		"ext-gd": "*",
-		"composer/installers": "~1.0.6",
-		"johnpbloch/wordpress": "^4.6",
-		"wp-cli/wp-cli": "dev-master",
-		"evista/vendauto": "dev-master",
+    ],
+    "extra": {
+        "wordpress-install-dir": "wordpress",
+        "installer-paths": {
+            "wordpress/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+            "wordpress/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "wordpress/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+        }
+    },
+    "require": {
+        "ext-gd": "*",
+        "composer/installers": "~1.0.6",
+        "johnpbloch/wordpress": "^4.6",
+        "wp-cli/wp-cli": "dev-master",
+        "evista/vendauto": "dev-master",
         "wpackagist-plugin/easy-wp-smtp": "^1.2.3"
-	},
-	"scripts": {
-		"wordpress-setup-core-install-prompt": "wp core install --prompt",
-		"wordpress-setup-clear-home": "wp option delete home || true",
-		"wordpress-setup-enable-plugins": "wp plugin activate vendauto #",
-		"wordpress-setup-permalink-structure": "wp rewrite structure '/%year%/%monthnum%/%day%/%postname%/' || true",
-		"wordpress-setup": [
-			"@wordpress-setup-core-install-prompt",
-			"@wordpress-setup-finalize",
-			"echo 'Install finished. Start develop with running: cd wordpress && php -S 127.0.0.1'"
-		],
-		"wordpress-setup-finalize": [
-			"@wordpress-setup-clear-home",
-			"@wordpress-setup-enable-plugins",
-			"@wordpress-setup-permalink-structure"
-		],
-		"wordpress-setup-welcome-post": [
-			"echo 'It works! Please see <a href=\"https://github.com/balintsera/wordpress-12factor\">wordpress-12factor on GitHub</a> for info and post-install instructions.' | wp post update 1 - --post_title=\"Welcome to WordPress\""
-		],
-		"wpcli": "wp",
-		"post-file-ops": [
-			"cp -f deploy.php wordpress",
-			"php move-uploads.php post"
-		],
-		"pre-file-ops": [
-			"rm -rf uploads",
-			"php move-uploads.php pre"
-		],
-		"pre-install-cmd": [
-			"@pre-file-ops"
-		],
-		"pre-update-cmd": [
-			"@pre-file-ops"
-		],
-		"post-install-cmd" : [
-			"@post-file-ops"
-		],
-		"post-update-cmd" : [
-			"@post-file-ops"
-		]
-	}
+    },
+    "scripts": {
+        "wordpress-setup-core-install-prompt": "wp core install --prompt",
+        "wordpress-setup-clear-home": "wp option delete home || true",
+        "wordpress-setup-enable-plugins": "wp plugin activate vendauto #",
+        "wordpress-setup-permalink-structure": "wp rewrite structure '/%year%/%monthnum%/%day%/%postname%/' || true",
+        "wordpress-setup": [
+            "@wordpress-setup-core-install-prompt",
+            "@wordpress-setup-finalize",
+            "echo 'Install finished. Start develop with running: cd wordpress && php -S 127.0.0.1'"
+        ],
+        "wordpress-setup-finalize": [
+            "@wordpress-setup-clear-home",
+            "@wordpress-setup-enable-plugins",
+            "@wordpress-setup-permalink-structure"
+        ],
+        "wordpress-setup-welcome-post": [
+            "echo 'It works! Please see <a href=\"https://github.com/balintsera/wordpress-12factor\">wordpress-12factor on GitHub</a> for info and post-install instructions.' | wp post update 1 - --post_title=\"Welcome to WordPress\""
+        ],
+        "wpcli": "wp",
+        "post-file-ops": [
+            "cp -f deploy.php wordpress",
+            "php move-uploads.php post"
+        ],
+        "pre-file-ops": [
+            "rm -rf uploads",
+            "php move-uploads.php pre"
+        ],
+        "pre-install-cmd": [
+            "@pre-file-ops"
+        ],
+        "pre-update-cmd": [
+            "@pre-file-ops"
+        ],
+        "post-install-cmd" : [
+            "@post-file-ops"
+        ],
+        "post-update-cmd" : [
+            "@post-file-ops"
+        ]
+    }
 }
