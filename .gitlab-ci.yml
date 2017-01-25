@@ -13,13 +13,12 @@ cache:
 
 before_script:
 - bash ci/docker_install.sh > /dev/null
-# Composer install
-- composer install
 
 
 php_standards:
   type: test
   script:
+  - composer install
   - php phpcs.phar --standard=PSR2 src
   allow_failure: true
 
