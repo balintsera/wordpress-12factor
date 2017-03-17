@@ -39,5 +39,8 @@ define('DISABLE_WP_CRON', in_array(getenv('DISABLE_WP_CRON'), ['true', '1', 'yes
 
 if(!defined('ABSPATH')) define('ABSPATH', dirname(__FILE__) . '/wordpress/'); // should not be necessary
 
+// Load autoload before everything
+require_once ABSPATH . '/../vendor/autoload.php';
+
 require_once(ABSPATH . 'wp-settings.php');
 
