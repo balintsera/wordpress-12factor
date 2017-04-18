@@ -11,6 +11,9 @@ cache:
   - wordpress/
   - uploads/
 
+variables:
+  THEME_NAME: "theme_name"
+  
 before_script:
 - bash ci/docker_install.sh > /dev/null
 
@@ -26,8 +29,8 @@ javascript_standards:
   type: test
   script:
   - npm install
-  - node_modules/eslint/bin/eslint.js -c .eslint src/themes/pass/js/functions.js
-  allow_failure: true
+  - node_modules/standard/bin/cmd.js 'src/themes/$THEME_NAME/assets/src/js/*.js*'
+  allow_failure: false
 
 staging:
   type: deploy
