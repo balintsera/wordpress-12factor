@@ -53,6 +53,9 @@
             "rm -rf uploads",
             "php move-uploads.php pre"
         ],
+        "webpack-build": [
+            "pushd src/theme/innofreight && npm install && npm run-script build && popd"
+        ],
         "pre-install-cmd": [
             "@pre-file-ops"
         ],
@@ -60,7 +63,8 @@
             "@pre-file-ops"
         ],
         "post-install-cmd" : [
-            "@post-file-ops"
+            "@post-file-ops",
+            "@webpack-build"
         ],
         "post-update-cmd" : [
             "@post-file-ops"
