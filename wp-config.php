@@ -3,6 +3,12 @@
 if (!getenv('DATABASE_URL')) {
 		throw new Exception('DATABASE_URL must be set');
 }
+
+// proxy setting 
+if (isset($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+    $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_X_FORWARDED_HOST'];
+}
+
 $db = parse_url(getenv('DATABASE_URL'));
 
 define('DB_NAME',     substr($db['path'], 1));
